@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Urbanist";
+  src: url("/fonts/Urbanist.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* COLORS */
+  --color-tdt-gold: #eeba2b;
+  --color-tdt-gray-dark: #333333;
+  --color-tdt-black: #222222;
+  --color-tdt-off-white: #f5f5f5;
+  --color-tdt-white: #ffffff;
+  --color-tdt-blue: #2d9cbd;
+  --color-tdt-red: #eb5757;
+
+  /* FONTS */
+  --font-display: "Urbanist", serif;
+  --font-sans: "Inter", sans-serif;
+
+  --variant-dark: (.dark &);
+}
+
+@layer base {
+  /* This locks in your global "Surface" and "Ink" colors */
+  body {
+    @apply bg-tdt-off-white text-tdt-black transition-colors duration-300;
+    @apply dark:bg-tdt-black dark:text-tdt-white;
+    @apply font-sans antialiased;
+    @apply overflow-x-hidden;
+  }
+
+  ::selection {
+    @apply bg-tdt-gold text-tdt-black;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-tdt-blue;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.1;
+
+  background-image: radial-gradient(#222222 0.5px, transparent 0.5px);
+  background-size: calc(10 * 0.5px) calc(10 * 0.5px);
+
+  transition: opacity 0.3s ease;
+}
+
+.dark body::before {
+  opacity: 0.1;
+
+  background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
+}

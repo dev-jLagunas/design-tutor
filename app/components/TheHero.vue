@@ -61,9 +61,9 @@ onMounted(() => {
 
 <template>
   <section
-    class="relative z-10 flex min-h-screen flex-col overflow-hidden px-6 py-12 md:px-12"
+    class="relative z-10 flex flex-col overflow-hidden px-6 py-12 md:px-12"
   >
-    <div class="mx-auto w-full max-w-7xl 2xl:px-12">
+    <div class="mx-auto w-full">
       <div class="relative flex flex-col">
         <!-- Line 1: Visual + Icons (3 on mobile, 6 on desktop) -->
         <div class="relative self-start flex items-center gap-4 md:gap-8">
@@ -189,7 +189,7 @@ onMounted(() => {
         >
           <NuxtLink
             to="/index"
-            class="group flex h-16 items-center justify-center gap-4 bg-tdt-gold px-10 text-[11px] font-black uppercase tracking-[0.2em] text-tdt-black transition-all hover:bg-tdt-black hover:text-tdt-white dark:hover:bg-tdt-white dark:hover:text-tdt-black"
+            class="group flex h-16 items-center shadow-lg justify-center gap-4 bg-tdt-gold px-10 text-[11px] font-black uppercase tracking-[0.2em] text-tdt-black transition-all hover:bg-tdt-black hover:text-tdt-white dark:hover:bg-tdt-white dark:hover:text-tdt-black"
           >
             See Designs
             <Icon

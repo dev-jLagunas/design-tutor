@@ -13,7 +13,7 @@ const toggleMenu = () => {
 
 <template>
   <nav
-    class="relative z-50 w-full font-sans bg-tdt-black text-tdt-white dark:bg-tdt-off-white dark:text-tdt-black transition-colors duration-300 shadow-xl"
+    class="sticky top-0 z-50 w-full font-sans bg-tdt-black text-tdt-white dark:bg-tdt-off-white dark:text-tdt-black transition-colors duration-300 shadow-xl"
   >
     <div
       class="mx-auto flex h-20 items-center justify-between px-6 lg:h-20 lg:px-12 xl:px-24"

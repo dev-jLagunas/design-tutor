@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  modules: ["@nuxtjs/color-mode", "@nuxt/icon"],
+  modules: ["@nuxtjs/color-mode", "@nuxt/icon", "@pinia/nuxt"],
   colorMode: {
     classSuffix: "",
   },

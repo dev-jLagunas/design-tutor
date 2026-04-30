@@ -21,7 +21,7 @@ onMounted(() => {
 
   tl.to(".hero-word span", {
     y: "0%",
-    duration: 1.5,
+    duration: 0.5,
     stagger: 0.2,
   }).to(
     [tagline.value, ctas.value],
@@ -33,7 +33,7 @@ onMounted(() => {
   );
 
   // highlightTl - Managing the sequential fill-up
-  const highlightTl = gsap.timeline({ repeat: -1, delay: 2.5 });
+  const highlightTl = gsap.timeline({ repeat: -1, delay: 1.1 });
   const fillLayers = [fill1.value, fill2.value, fill3.value];
 
   highlightTl

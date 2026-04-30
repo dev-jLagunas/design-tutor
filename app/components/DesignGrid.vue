@@ -56,7 +56,7 @@ const onMouseLeave = (el) => {
 
 <template>
   <section
-    class="pb-24 px-6 md:px-12 bg-tdt-off-white dark:bg-tdt-black transition-colors duration-500 -mt-4 md:mt-16"
+    class="pb-24 px-6 md:px-12 bg-tdt-off-white dark:bg-tdt-black transition-colors duration-500 -mt-4 md:mt-24"
   >
     <!-- Search Logic -->
     <div
@@ -93,15 +93,15 @@ const onMouseLeave = (el) => {
     </div>
 
     <!-- The Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-12">
       <div
         v-for="(design, index) in store.filteredDesigns"
         :key="design.id"
         @mouseenter="onMouseEnter($event.currentTarget)"
         @mouseleave="onMouseLeave($event.currentTarget)"
-        class="group relative flex flex-col border border-tdt-black/10 dark:border-tdt-white/10 p-4 transition-all duration-300 hover:border-tdt-gold rounded-none"
+        class="group relative flex flex-col border border-tdt-black/10 dark:border-tdt-white/10 p-4 transition-all duration-300 hover:scale-95 hover:border-2 hover:border-tdt-gold hover:shadow-xl rounded-none"
       >
-        <div class="flex justify-between items-start mb-12">
+        <div class="flex justify-between items-start mb-4">
           <div class="flex flex-col">
             <span class="text-[10px] font-black text-tdt-gold"
               >VOL_0{{ index + 1 }}</span
@@ -118,7 +118,7 @@ const onMouseLeave = (el) => {
         </div>
 
         <!-- REFACTORED TITLE BLOCK WITH IMAGE -->
-        <div class="mb-8">
+        <div class="">
           <span
             class="text-[10px] font-black uppercase text-tdt-blue mb-4 block tracking-tight"
             >{{ design.category }}</span

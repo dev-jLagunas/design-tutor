@@ -15,4 +15,9 @@ export default defineNuxtConfig({
   future: {
     compatibilityVersion: 4,
   },
+  nitro: {
+    preset: "netlify",
+  },
+  ssr: false,
 });
+clearInterval;

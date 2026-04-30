@@ -11,57 +11,5 @@
     "realWorldCopy": "The modern standard for clarity. We help you build products that breathe and speak directly to your audience.",
     "price": 25,
     "marketUrl": "https://gumroad.com"
-  },
-  {
-    "id": "brutal-02",
-    "slug": "brutalist-raw",
-    "title": "Brutalist",
-    "category": "Brutalism",
-    "tags": ["Raw", "Direct", "Impact"],
-    "description": "Intentionally raw and unpolished, focusing on bold typography and high-contrast layouts.",
-    "image": "/images/home/brutalism-cover.png",
-    "teachingCopy": "Brutalism is a reaction against 'polished' web design. It uses raw HTML elements and bold, oversized type...",
-    "realWorldCopy": "Stand out by being different. We craft digital experiences that demand attention and refuse to blend in.",
-    "price": 30,
-    "marketUrl": "https://gumroad.com"
-  },
-  {
-    "id": "bauhaus-03",
-    "slug": "bauhaus-foundations",
-    "title": "Bauhaus",
-    "category": "Bauhaus",
-    "tags": ["Geometric", "Functional", "Balance"],
-    "description": "An exploration of geometric simplicity where form strictly follows the requirements of function.",
-    "image": "/images/home/minimalism-cover.png",
-    "teachingCopy": "Bauhaus teaches us that art and industry are one. Use circles, squares, and triangles to guide the eye...",
-    "realWorldCopy": "Design that works. Our systems are built on the timeless principles of the Bauhaus movement.",
-    "price": 35,
-    "marketUrl": "https://gumroad.com"
-  },
-  {
-    "id": "swiss-04",
-    "slug": "swiss-order",
-    "title": "Swiss Style",
-    "category": "International",
-    "tags": ["Grid", "Clarity", "Helvetica"],
-    "description": "Objective clarity through mathematical grid systems and neutral sans-serif typography.",
-    "image": "/images/home/brutalism-cover.png",
-    "teachingCopy": "Swiss design is the backbone of modern UX. By using a strict grid, we ensure content hierarchy is absolute...",
-    "realWorldCopy": "Clean, precise, and global. The definitive standard for high-information density interfaces.",
-    "price": 40,
-    "marketUrl": "https://gumroad.com"
-  },
-  {
-    "id": "flat-05",
-    "slug": "flat-utility",
-    "title": "Flat Design",
-    "category": "Utility",
-    "tags": ["2D", "Fast", "Minimal"],
-    "description": "Prioritizing speed and digital utility by removing all 3D stylistic illusions.",
-    "image": "/images/home/minimalism-cover.png",
-    "teachingCopy": "Flat design embraces the digital screen. No shadows, no gradients—just pure color and typography...",
-    "realWorldCopy": "Optimized for the modern web. Lightweight, accessible, and incredibly fast user experiences.",
-    "price": 20,
-    "marketUrl": "https://gumroad.com"
   }
 ]

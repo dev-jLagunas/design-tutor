@@ -176,7 +176,7 @@ onMounted(() => {
       >
         <div ref="tagline" class="relative max-w-2xl">
           <p
-            class="font-sans text-lg font-medium leading-relaxed tracking-wide text-tdt-black/70 dark:text-tdt-white/80 md:text-xl xl:text-2xl"
+            class="font-sans text-lg font-medium leading-relaxed tracking-wide text-tdt-black/70 dark:text-tdt-white/80 md:text-xl xl:text-2xl lg:pr-12"
           >
             An open library of design styles, history, and fundamental rules for
             the modern designer.

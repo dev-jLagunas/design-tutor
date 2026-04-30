@@ -3,7 +3,7 @@
     <TheNavigation />
 
     <main class="">
-      <NuxtPage />
+      <NuxtPage class="" />
     </main>
 
     <TheFooter />

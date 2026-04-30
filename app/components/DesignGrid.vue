@@ -93,7 +93,7 @@ const onMouseLeave = (el) => {
     </div>
 
     <!-- The Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-12">
       <div
         v-for="(design, index) in store.filteredDesigns"
         :key="design.id"
@@ -125,7 +125,7 @@ const onMouseLeave = (el) => {
           >
           <div class="flex items-start gap-4">
             <h2
-              class="card-title font-display text-6xl lg:text-8xl uppercase leading-[0.8] tracking-tighter transition-colors group-hover:text-tdt-gold max-w-[3ch] break-all inline-block shrink-0"
+              class="card-title font-display text-6xl lg:text-7xl uppercase leading-[0.8] tracking-tighter transition-colors group-hover:text-tdt-gold max-w-[3ch] break-all inline-block shrink-0"
               v-html="design.title"
             ></h2>
 
@@ -192,9 +192,9 @@ const onMouseLeave = (el) => {
           >
           <div class="flex items-start gap-4">
             <h2
-              class="font-display text-7xl lg:text-8xl uppercase leading-[0.8] tracking-tighter max-w-[3ch] break-all shrink-0"
+              class="font-display text-6xl lg:text-7xl uppercase leading-[0.8] tracking-tighter max-w-[3ch] break-all shrink-0"
             >
-              Always Building
+              Still Building
             </h2>
 
             <!-- Visual Placeholder for Upcoming Content -->

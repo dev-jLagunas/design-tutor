@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="hidden w-full bg-tdt-off-white py-16 px-12 transition-colors duration-300 dark:bg-tdt-black md:block"
+    class="hidden w-full py-16 px-12 transition-colors duration-300 dark:bg-tdt-off-white dark:text-tdt-black md:block"
   >
     <div class="mx-auto flex max-w-screen-2xl flex-col gap-12">
       <div class="flex items-end justify-between">

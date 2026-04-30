@@ -35,7 +35,6 @@
 }
 
 @layer base {
-  /* This locks in your global "Surface" and "Ink" colors */
   body {
     @apply bg-tdt-off-white text-tdt-black transition-colors duration-300;
     @apply dark:bg-tdt-black dark:text-tdt-white;

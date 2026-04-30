@@ -13,10 +13,10 @@ const toggleMenu = () => {
 
 <template>
   <nav
-    class="relative z-50 w-full font-sans bg-tdt-black text-tdt-white dark:bg-tdt-off-white dark:text-tdt-black transition-colors duration-300 shadow-lg"
+    class="relative z-50 w-full font-sans bg-tdt-black text-tdt-white dark:bg-tdt-off-white dark:text-tdt-black transition-colors duration-300 shadow-xl"
   >
     <div
-      class="mx-auto flex h-20 items-center justify-between px-6 lg:h-20 lg:px-12 xl:justify-center xl:gap-36"
+      class="mx-auto flex h-20 items-center justify-between px-6 lg:h-20 lg:px-12 xl:px-24"
     >
       <div class="flex items-center gap-4 lg:gap-8">
         <NuxtLink to="/" class="flex items-center gap-4 group">
@@ -110,7 +110,7 @@ const toggleMenu = () => {
     >
       <div
         v-if="isMenuOpen"
-        class="fixed inset-0 top-20 z-40 flex flex-col bg-tdt-off-white px-6 py-12 dark:bg-tdt-black lg:hidden"
+        class="fixed inset-0 top-20 z-40 flex flex-col bg-tdt-black px-6 py-12 dark:bg-tdt-off-white lg:hidden"
       >
         <div class="mb-12">
           <span

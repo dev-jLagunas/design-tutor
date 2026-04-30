@@ -11,7 +11,7 @@ const fill3 = ref(null);
 onMounted(() => {
   const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
-  // Initial Reveal (Crop in from bottom) - UNTOUCHED
+  // Initial Reveal (Crop in from bottom)
   gsap.set(".hero-word span", { y: "110%" });
   gsap.set([tagline.value, ctas.value], { opacity: 0 });
 
@@ -32,7 +32,7 @@ onMounted(() => {
     "-=0.5",
   );
 
-  // highlightTl - MODIFIED ONLY
+  // highlightTl - Managing the sequential fill-up
   const highlightTl = gsap.timeline({ repeat: -1, delay: 2.5 });
   const fillLayers = [fill1.value, fill2.value, fill3.value];
 
@@ -42,18 +42,17 @@ onMounted(() => {
       clipPath: "inset(0% 0% 0% 0%)",
       duration: 0.8,
       ease: "power2.inOut",
-      stagger: 0.8, // standard sequential fill
+      stagger: 0.8,
     })
     // 2. Unfill ALL simultaneously after a distinct pause
     .to(
       fillLayers,
       {
-        clipPath: "inset(0% 0% 100% 0%)", // Empties out visually
+        clipPath: "inset(0% 0% 100% 0%)",
         duration: 0.8,
         ease: "power2.inOut",
-        // Simultaneous, no stagger here
       },
-      "+=1.5", // hold fully filled state for 1.5s
+      "+=1.5",
     )
     // 3. Reset instant to initial bottom clip for loop restart
     .set(fillLayers, { clipPath: "inset(100% 0% 0% 0%)" });
@@ -64,8 +63,9 @@ onMounted(() => {
   <section
     class="relative z-10 flex min-h-screen flex-col overflow-hidden px-6 py-12 md:px-12"
   >
-    <div class="mx-auto w-full max-w-7xl">
+    <div class="mx-auto w-full max-w-7xl 2xl:px-12">
       <div class="relative flex flex-col">
+        <!-- Line 1: Visual + Icons (3 on mobile, 6 on desktop) -->
         <div class="relative self-start flex items-center gap-4 md:gap-8">
           <h1
             class="hero-word relative overflow-hidden font-display text-[18vw] font-black uppercase leading-[0.8] tracking-tighter lg:text-[180px] xl:text-[250px]"
@@ -80,6 +80,8 @@ onMounted(() => {
               >Visual</span
             >
           </h1>
+
+          <!-- Standard Icons -->
           <Icon
             name="lucide:asterisk"
             class="text-5xl md:text-6xl text-tdt-gold animate-spin-slow"
@@ -92,12 +94,35 @@ onMounted(() => {
             name="lucide:palette"
             class="text-3xl md:text-4xl text-tdt-red animate-spin-slow opacity-60"
           />
+
+          <!-- Desktop Extra Icons (lg: 1024px+) -->
+          <Icon
+            name="lucide:layout-panel-left"
+            class="hidden lg:block text-2xl text-tdt-gold animate-spin-slow opacity-40"
+          />
+          <Icon
+            name="lucide:framer"
+            class="hidden lg:block text-3xl text-tdt-blue animate-spin-slow opacity-40"
+          />
         </div>
 
+        <!-- Line 2: Icons + Styles (3 on mobile, 6 on desktop) -->
         <div class="relative self-end flex items-center gap-4 md:gap-8">
+          <!-- Desktop Extra Icons (lg: 1024px+) -->
+
+          <Icon
+            name="lucide:git-branch"
+            class="hidden lg:block text-2xl text-tdt-red animate-spin-slow opacity-40"
+          />
+          <Icon
+            name="lucide:pencil-ruler"
+            class="hidden lg:block text-3xl text-tdt-blue animate-spin-slow opacity-40"
+          />
+
+          <!-- Standard Icons -->
           <Icon
             name="lucide:mouse-pointer-2"
-            class="text-3xl md:text-4xl text-tdt-gold animate-spin-slow opacity-60"
+            class="text-3xl hidden md:text-4xl text-tdt-gold animate-spin-slow opacity-60"
           />
           <Icon
             name="lucide:box"
@@ -107,6 +132,7 @@ onMounted(() => {
             name="lucide:command"
             class="text-4xl md:text-5xl text-tdt-blue animate-spin-slow"
           />
+
           <h1
             class="hero-word relative overflow-hidden font-display text-[18vw] font-black uppercase leading-[0.8] tracking-tighter lg:text-[180px] xl:text-[250px]"
           >
@@ -122,6 +148,7 @@ onMounted(() => {
           </h1>
         </div>
 
+        <!-- Line 3: Explained + Period (Stays Minimal) -->
         <div class="relative self-start flex items-baseline">
           <h1
             class="hero-word relative overflow-hidden font-display text-[18vw] font-black uppercase leading-[0.8] tracking-tighter lg:text-[180px] xl:text-[250px]"
@@ -143,12 +170,13 @@ onMounted(() => {
         </div>
       </div>
 
+      <!-- Tagline & Action Bar -->
       <div
         class="mt-4 flex flex-col items-start justify-between lg:flex-row lg:items-end"
       >
-        <div ref="tagline" class="relative max-w-xl">
+        <div ref="tagline" class="relative max-w-2xl">
           <p
-            class="font-sans text-lg font-medium leading-relaxed tracking-wide text-tdt-black/70 dark:text-tdt-white/80 md:text-xl"
+            class="font-sans text-lg font-medium leading-relaxed tracking-wide text-tdt-black/70 dark:text-tdt-white/80 md:text-xl xl:text-2xl"
           >
             An open library of design styles, history, and fundamental rules for
             the modern designer.

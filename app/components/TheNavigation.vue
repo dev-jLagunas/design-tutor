@@ -13,21 +13,21 @@ const toggleMenu = () => {
 
 <template>
   <nav
-    class="relative z-50 w-full font-sans bg-tdt-off-white text-tdt-black transition-colors duration-300"
+    class="relative z-50 w-full font-sans bg-tdt-black text-tdt-white dark:bg-tdt-off-white dark:text-tdt-black transition-colors duration-300 shadow-lg"
   >
     <div
-      class="mx-auto flex h-20 items-center justify-between px-6 lg:h-24 lg:px-12"
+      class="mx-auto flex h-20 items-center justify-between px-6 lg:h-20 lg:px-12 xl:justify-center xl:gap-36"
     >
       <div class="flex items-center gap-4 lg:gap-8">
         <NuxtLink to="/" class="flex items-center gap-4 group">
           <img
             :src="
               colorMode.value === 'dark'
-                ? '/images/brand/tdt-logo-transparent-dark.png'
-                : '/images/brand/tdt-logo-transparent.png'
+                ? '/images/brand/tdt-logo-transparent.png'
+                : '/images/brand/tdt-logo-transparent-dark.png'
             "
             alt="TDT Logo"
-            class="h-12 w-auto lg:h-14 xl:h-16 transition-transform duration-500 group-hover:rotate-12"
+            class="h-12 w-auto lg:h-14 xl:h-20 transition-transform duration-500 group-hover:rotate-12"
           />
           <div class="flex flex-col">
             <span
@@ -36,9 +36,9 @@ const toggleMenu = () => {
               The Design Tutor
             </span>
             <span
-              class="mt-1 hidden text-xs font-medium tracking-[0.2em] text-tdt-black/75 lg:block"
+              class="mt-1 hidden text-xs font-medium tracking-[0.2em] text-tdt-white/75 dark:text-tdt-black/75 lg:block"
             >
-              Visual designs analyzed and explained by Juan Lagunas
+              Visual designs analyzed and explained
             </span>
           </div>
         </NuxtLink>
@@ -46,12 +46,12 @@ const toggleMenu = () => {
 
       <div class="hidden items-center gap-8 lg:flex">
         <div
-          class="flex items-center border-b border-tdt-black/20 pb-1 dark:border-tdt-white/20"
+          class="flex items-center border-b border-tdt-white/20 pb-1 dark:border-tdt-black/20"
         >
           <input
             type="text"
             placeholder="SEARCH INDEX..."
-            class="bg-transparent text-[10px] font-bold tracking-widest outline-none placeholder:text-tdt-black/30 dark:placeholder:text-tdt-white/30"
+            class="bg-transparent text-[10px] font-bold tracking-widest outline-none dark:text-tdt-black text-tdt-white"
           />
           <Icon name="lucide:search" class="text-sm opacity-50" />
         </div>
@@ -69,7 +69,7 @@ const toggleMenu = () => {
 
         <button
           @click="toggleColorMode"
-          class="flex h-10 w-10 items-center justify-center rounded-full border hover:bg-tdt-black hover:text-tdt-white dark:hover:bg-tdt-white dark:hover:text-tdt-black transition-all"
+          class="flex h-10 w-10 items-center justify-center rounded-full border hover:bg-tdt-black hover:text-tdt-white dark:hover:text-tdt-white dark:hover:bg-tdt-black transition-all duration-200 hover:cursor-pointer"
         >
           <Icon
             :name="colorMode.value === 'dark' ? 'lucide:sun' : 'lucide:moon'"
@@ -79,9 +79,13 @@ const toggleMenu = () => {
       </div>
 
       <div class="flex items-center gap-2 lg:hidden">
-        <button @click="toggleColorMode" class="text-xl p-2">
+        <button
+          @click="toggleColorMode"
+          class="text-xl p-2 hover:cursor-pointer hover:scale-105 transition-all duration-200"
+        >
           <Icon
             :name="colorMode.value === 'dark' ? 'lucide:sun' : 'lucide:moon'"
+            class=""
           />
         </button>
 

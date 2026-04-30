@@ -66,15 +66,12 @@ body::before {
   inset: 0;
   z-index: 1;
   opacity: 0.1;
-
   background-image: radial-gradient(#222222 0.5px, transparent 0.5px);
   background-size: calc(10 * 0.5px) calc(10 * 0.5px);
-
   transition: opacity 0.3s ease;
 }
 
 .dark body::before {
   opacity: 0.1;
-
   background-image: radial-gradient(#ffffff 0.5px, transparent 0.5px);
 }

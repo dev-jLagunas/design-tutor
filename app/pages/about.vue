@@ -587,7 +587,7 @@ onBeforeUnmount(() => {
   }
   /* Mobile Alternation: Flip every second syllabus item (Children 3, 5, 7...) */
   .syllabus-item:nth-child(even) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
   .item_media,
   .item_content {

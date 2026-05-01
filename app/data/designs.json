@@ -7,6 +7,8 @@
     "tags": ["Essentialism", "Focus", "Space"],
     "description": "A study on geometric balance and the reduction of form to its essential functions.",
     "image": "/images/home/minimalism-cover.png",
+    "learnRoute": "/minimalism-01/learn",
+    "templateRoute": "/minimalism-01/template",
     "teachingCopy": "Minimalism is about removing the noise to reveal the intent. Every pixel must justify its existence...",
     "realWorldCopy": "The modern standard for clarity. We help you build products that breathe and speak directly to your audience.",
     "price": 25,

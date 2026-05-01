@@ -152,18 +152,25 @@ const onMouseLeave = (el) => {
 
         <div class="mt-auto flex flex-col gap-2 relative z-10">
           <NuxtLink
-            :to="`/designs/${design.slug}`"
+            :to="design.learnRoute"
             class="h-14 flex items-center justify-center rounded-none bg-tdt-black text-[10px] font-black uppercase tracking-[0.2em] text-tdt-white transition-colors duration-300 hover:bg-tdt-gold hover:text-tdt-black dark:bg-tdt-white dark:text-tdt-black dark:hover:bg-tdt-gold dark:hover:text-tdt-black"
           >
-            Learn Design
+            Learn Design Strategy
+          </NuxtLink>
+
+          <NuxtLink
+            :to="design.templateRoute"
+            class="h-12 flex items-center justify-center rounded-none border-2 border-tdt-black text-[9px] font-black uppercase tracking-[0.3em] transition-all duration-300 hover:bg-tdt-black hover:text-tdt-white dark:border-tdt-white dark:hover:bg-tdt-white dark:hover:text-tdt-black"
+          >
+            See Live Template
           </NuxtLink>
 
           <NuxtLink
             :to="design.marketUrl"
             target="_blank"
-            class="h-12 flex items-center justify-center rounded-none border-2 border-tdt-black/10 text-[9px] font-black uppercase tracking-[0.3em] transition-all duration-300 hover:border-tdt-blue hover:cursor-pointer hover:text-tdt-blue hover:bg-tdt-blue/5 dark:border-tdt-white/10 dark:hover:border-tdt-blue dark:hover:text-tdt-blue"
+            class="h-10 flex items-center justify-center rounded-none border border-tdt-black/10 text-[8px] font-black uppercase tracking-[0.3em] opacity-60 transition-all duration-300 hover:opacity-100 hover:border-tdt-blue hover:text-tdt-blue dark:border-tdt-white/10 dark:hover:border-tdt-blue"
           >
-            Buy Assets — ${{ design.price }}
+            Get Code — ${{ design.price }}
           </NuxtLink>
         </div>
       </div>

@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "brandName": "Verdant",
+    "tagline": "Botanical Essentials",
+    "links": [
+      { "label": "Plants", "to": "#" },
+      { "label": "Company", "to": "#" },
+      { "label": "Contact", "to": "#" },
+      { "label": "Access", "to": "#" }
+    ]
+  },
+  "heroTitle": "Verdant.",
+  "heroText": "Curated botanical essentials for the modern living space. We believe that bringing nature indoors should be as simple and intentional as the plants themselves.",
+  "heroCta": "Shop Collection",
+  "heroImage": "https://images.unsplash.com/photo-1545241047-6083a3684587?q=80&w=2574&auto=format&fit=crop",
+  "history": [
+    {
+      "id": 1,
+      "label": "01",
+      "title": "Monstera Deliciosa",
+      "description": "Known as the Swiss Cheese plant, its dramatic natural perforations make it a living architectural statement for any minimalist interior.",
+      "image": "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      "id": 2,
+      "label": "02",
+      "title": "Snake Plant",
+      "description": "The sculptural sentinel. Its vertical, sword-like leaves provide a rigid geometric contrast to soft furniture and open living spaces.",
+      "image": "https://images.unsplash.com/photo-1593482892290-f54927ae1bf6?q=80&w=2000&auto=format&fit=crop"
+    },
+    {
+      "id": 3,
+      "label": "03",
+      "title": "Olive Tree",
+      "description": "With its silver-green foliage and slender trunk, the Olive Tree brings a sense of Mediterranean tranquility and organic texture.",
+      "image": "https://images.unsplash.com/photo-1543362906-acfc16c67564?q=80&w=2000&auto=format&fit=crop"
+    }
+  ]
+}

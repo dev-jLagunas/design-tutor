@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <TheNavigation />
-
-    <main>
-      <NuxtPage />
-    </main>
-
-    <TheFooter />
-    <MobileFooter />
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>

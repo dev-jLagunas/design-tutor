@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, onBeforeUnmount, ref } from "vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,9 +13,8 @@ const fill1 = ref(null);
 const fill2 = ref(null);
 const fill3 = ref(null);
 
-/**
- * Step Configuration (Phases 01-10)
- */
+let ctx;
+
 const steps = [
   {
     num: "1",
@@ -98,9 +98,6 @@ const steps = [
   },
 ];
 
-/**
- * Scroll to next card logic
- */
 const scrollNext = () => {
   window.scrollBy({
     top: window.innerHeight,
@@ -109,8 +106,7 @@ const scrollNext = () => {
 };
 
 onMounted(() => {
-  const ctx = gsap.context(() => {
-    // 1. Hero Masking Animation
+  ctx = gsap.context(() => {
     const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
     gsap.set(".hero-word span", { y: "110%" });
     gsap.set([fill1.value, fill2.value, fill3.value], {
@@ -135,7 +131,6 @@ onMounted(() => {
         clipPath: "inset(100% 0% 0% 0%)",
       });
 
-    // 2. Stacking Deck Logic (Main Animation)
     const items = gsap.utils.toArray(".item");
     const totalItems = items.length;
 
@@ -175,7 +170,19 @@ onMounted(() => {
           );
       }
     });
-  });
+  }, mainContainer.value);
+});
+
+onBeforeUnmount(() => {
+  if (ctx) {
+    ctx.revert(); // Reverts the DOM to its pre-GSAP state
+  }
+
+  // The Nuclear Option: Kill every active ScrollTrigger globally
+  ScrollTrigger.getAll().forEach((t) => t.kill());
+
+  // Reset the global refresh state so Index.vue starts fresh
+  ScrollTrigger.refresh();
 });
 </script>
 

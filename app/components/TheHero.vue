@@ -61,7 +61,7 @@ onMounted(() => {
 
 <template>
   <section
-    class="relative z-10 flex flex-col overflow-hidden px-6 py-12 md:px-12"
+    class="bg-dot-grid relative z-10 flex flex-col overflow-hidden px-6 py-12 md:px-12"
   >
     <div class="mx-auto w-full">
       <div class="relative flex flex-col">

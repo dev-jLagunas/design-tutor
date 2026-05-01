@@ -56,6 +56,7 @@ const onMouseLeave = (el) => {
 
 <template>
   <section
+    id="design-grid"
     class="bg-dot-grid pb-24 px-6 md:px-12 bg-tdt-off-white dark:bg-tdt-black transition-colors duration-500"
   >
     <!-- Search Logic -->

@@ -9,9 +9,6 @@ if (process.client) {
 
 const mainContainer = ref(null);
 const activeIndex = ref(1);
-const fill1 = ref(null);
-const fill2 = ref(null);
-const fill3 = ref(null);
 
 let ctx;
 
@@ -107,29 +104,7 @@ const scrollNext = () => {
 
 onMounted(() => {
   ctx = gsap.context(() => {
-    const heroTl = gsap.timeline({ defaults: { ease: "power4.out" } });
-    gsap.set(".hero-word span", { y: "110%" });
-    gsap.set([fill1.value, fill2.value, fill3.value], {
-      clipPath: "inset(100% 0% 0% 0%)",
-    });
-
-    heroTl.to(".hero-word span", { y: "0%", duration: 0.6, stagger: 0.15 });
-
-    const highlightTl = gsap.timeline({ repeat: -1, delay: 1 });
-    highlightTl
-      .to([fill1.value, fill2.value, fill3.value], {
-        clipPath: "inset(0% 0% 0% 0%)",
-        duration: 0.8,
-        stagger: 0.8,
-      })
-      .to(
-        [fill1.value, fill2.value, fill3.value],
-        { clipPath: "inset(0% 0% 100% 0%)", duration: 0.8 },
-        "+=1.5",
-      )
-      .set([fill1.value, fill2.value, fill3.value], {
-        clipPath: "inset(100% 0% 0% 0%)",
-      });
+    // Hero entrance is now handled internally by ReusableDisplayHero
 
     const items = gsap.utils.toArray(".item");
     const totalItems = items.length;
@@ -175,20 +150,15 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (ctx) {
-    ctx.revert(); // Reverts the DOM to its pre-GSAP state
+    ctx.revert();
   }
-
-  // The Nuclear Option: Kill every active ScrollTrigger globally
   ScrollTrigger.getAll().forEach((t) => t.kill());
-
-  // Reset the global refresh state so Index.vue starts fresh
   ScrollTrigger.refresh();
 });
 </script>
 
 <template>
   <div ref="mainContainer" class="deck-container">
-    <!-- Progressive Tracker remains on top -->
     <div class="card-indicator">
       <span class="index-current">0{{ activeIndex }}</span>
       <span class="index-dot">.</span>
@@ -199,46 +169,29 @@ onBeforeUnmount(() => {
 
     <div class="wrapper">
       <!-- ITEM 0: HERO (Z-INDEX 1) -->
-      <div class="item hero-item bg-dot-grid" style="z-index: 1">
-        <div class="hero-decor-layer">
-          <Icon name="lucide:layers-3" class="hero-icon blue-icon pos-b" />
-          <Icon name="lucide:component" class="hero-icon red-icon pos-c" />
-          <Icon
-            name="lucide:binary"
-            class="hero-icon gold-icon pos-d opacity-20"
-          />
-        </div>
-
-        <div class="hero-content">
-          <div class="hero-line right">
-            <h1 class="hero-word">
-              <span class="base-text">What</span>
-              <span ref="fill1" class="fill-text gold">What</span>
-            </h1>
-          </div>
-
-          <div class="hero-line left">
-            <h1 class="hero-word">
-              <span class="base-text">Actually</span>
-              <span ref="fill2" class="fill-text blue">Actually</span>
-            </h1>
-          </div>
-
-          <div class="hero-line right">
-            <h1 class="hero-word relative">
-              <span class="base-text">is this</span>
-              <span ref="fill3" class="fill-text red">is this</span>
-              <span class="period absolute right-0">?</span>
-            </h1>
-          </div>
-
-          <div class="hero-intro-text text-2xl mt-16 max-w-4xl">
-            <p>
-              Deconstructing the architectural logic, motion standards, and
-              design systems of our scalable visual ecosystem.
-            </p>
-          </div>
-        </div>
+      <div class="item hero-item" style="z-index: 1">
+        <ReusableDisplayHero
+          word1="What"
+          word2="IsThis"
+          word3="Project?"
+          tagline="Deconstructing the architectural logic, motion standards, and design systems of our scalable visual ecosystem."
+          class="w-full h-full"
+        >
+          <template #actions>
+            <NuxtLink
+              to="/"
+              class="group flex h-16 items-center shadow-lg justify-center gap-4 bg-tdt-gold px-10 text-[11px] font-black uppercase tracking-[0.2em] text-tdt-black transition-all hover:bg-tdt-black hover:text-tdt-white dark:hover:bg-tdt-white dark:hover:text-tdt-black"
+            >
+              Home
+            </NuxtLink>
+            <NuxtLink
+              to="/contact"
+              class="flex h-16 items-center justify-center px-10 text-[11px] font-black uppercase tracking-[0.2em] transition-colors hover:text-tdt-blue"
+            >
+              Contact
+            </NuxtLink>
+          </template>
+        </ReusableDisplayHero>
 
         <button
           @click="scrollNext"
@@ -257,12 +210,10 @@ onBeforeUnmount(() => {
         class="item syllabus-item bg-dot-grid"
         :style="{ zIndex: index + 2 }"
       >
-        <!-- The Number Block -->
         <div class="item_media" :class="step.colorClass">
           <h2 class="big-number">{{ step.num }}</h2>
         </div>
 
-        <!-- The Content Block -->
         <div class="item_content">
           <div class="meta">
             <Icon :name="step.icon" class="step-icon" />
@@ -311,10 +262,7 @@ onBeforeUnmount(() => {
   pointer-events: none;
   mix-blend-mode: difference;
 }
-.index-current {
-  font-size: 2rem;
-  color: #fff;
-}
+.index-current,
 .index-dot {
   font-size: 2rem;
   color: #fff;
@@ -340,13 +288,10 @@ onBeforeUnmount(() => {
   background: var(--color-tdt-black);
 }
 
-/* Syllabus Alternation Logic */
 .syllabus-item {
   flex-direction: row;
 }
 
-/* Desktop: Flip every second syllabus item (Child 3, 5, 7...) */
-/* Since Child 1 is Hero, the syllabus items are Child 2, 3, 4, etc. */
 .syllabus-item:nth-child(even) {
   flex-direction: row-reverse;
 }
@@ -368,7 +313,6 @@ onBeforeUnmount(() => {
   padding: 0 10%;
 }
 
-/* Typography preservation */
 .description-text {
   font-size: clamp(1.5rem, 3.5vw, 4rem);
   line-height: 0.9;
@@ -380,114 +324,12 @@ onBeforeUnmount(() => {
   color: #f2f2f2;
 }
 
-/* Hero Specifics (preserved) */
 .hero-item {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 5rem 5% 0;
   position: relative;
-}
-.hero-content {
-  width: 100%;
-  max-width: 1600px;
-  display: flex;
-  flex-direction: column;
-  z-index: 2;
+  display: block; /* Changed to allow DisplayHero to fill normally */
 }
 
-.hero-intro-text {
-  line-height: 0.9;
-  font-weight: 200;
-  font-family: var(--font-sans);
-  text-transform: uppercase;
-}
-.hero-line {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.hero-line.left {
-  align-self: flex-start;
-}
-.hero-line.right {
-  align-self: flex-end;
-  align-items: baseline;
-}
-.hero-word {
-  position: relative;
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 15vw, 250px);
-  font-weight: 900;
-  text-transform: uppercase;
-  line-height: 0.8;
-  letter-spacing: -0.05em;
-}
-.base-text {
-  display: block;
-  color: rgba(0, 0, 0, 0.1);
-}
-.dark .base-text {
-  color: rgba(255, 255, 255, 0.05);
-}
-.fill-text {
-  position: absolute;
-  inset: 0;
-  display: block;
-}
-.hero-decor-layer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-.hero-icon {
-  position: absolute;
-  font-size: clamp(4rem, 8vw, 10rem);
-  animation: spin 25s linear infinite;
-}
-.pos-a {
-  top: 15%;
-  right: 10%;
-  color: var(--color-tdt-gold);
-}
-.pos-b {
-  top: 55%;
-  left: 5%;
-  animation-direction: reverse;
-  font-size: 6rem;
-  opacity: 0.2;
-  color: var(--color-tdt-blue);
-}
-.pos-c {
-  bottom: 40%;
-  right: 15%;
-  font-size: 5rem;
-  opacity: 0.2;
-  color: var(--color-tdt-gold);
-}
-.pos-d {
-  top: 10%;
-  left: 20%;
-  font-size: 4rem;
-  color: var(--color-tdt-red);
-}
-.gold {
-  color: #facc15;
-}
-.blue {
-  color: #3b82f6;
-}
-.red {
-  color: #ef4444;
-}
-.period {
-  font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 10rem);
-  color: #facc15;
-}
-
-/* Remaining Styles (preserved) */
+/* Big Number Typography */
 .big-number {
   font-family: var(--font-display);
   font-size: clamp(10rem, 35vw, 450px);
@@ -495,6 +337,7 @@ onBeforeUnmount(() => {
   font-weight: 900;
   letter-spacing: -0.05em;
 }
+
 .meta {
   display: flex;
   flex-direction: column;
@@ -519,6 +362,8 @@ onBeforeUnmount(() => {
   color: var(--color-tdt-blue);
   font-size: 12px;
 }
+
+/* Background Helpers */
 .gold-bg {
   background: var(--color-tdt-gold);
   color: #222222;
@@ -531,13 +376,12 @@ onBeforeUnmount(() => {
   background: var(--color-tdt-blue);
   color: #fff;
 }
-.black-bg {
-  background: var(--color-tdt-black);
-  color: #fff;
-}
+
 .scroll-hint {
   position: absolute;
   bottom: 4rem;
+  left: 50vw;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -546,7 +390,6 @@ onBeforeUnmount(() => {
   border: none;
   cursor: pointer;
   z-index: 100;
-  transition: transform 0.3s ease;
 }
 .hint-text {
   font-size: 12px;
@@ -558,8 +401,6 @@ onBeforeUnmount(() => {
   width: 2px;
   height: 80px;
   background: #facc15;
-  animation: bounce 2s infinite ease-in-out;
-  transform-origin: top;
 }
 
 @keyframes bounce {
@@ -571,21 +412,12 @@ onBeforeUnmount(() => {
     transform: scaleY(1.4);
   }
 }
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
-/* Responsive Overrides */
+/* Responsive */
 @media (max-width: 1024px) {
   .syllabus-item {
     flex-direction: column-reverse;
   }
-  /* Mobile Alternation: Flip every second syllabus item (Children 3, 5, 7...) */
   .syllabus-item:nth-child(even) {
     flex-direction: column-reverse;
   }
